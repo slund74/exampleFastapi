@@ -58,7 +58,7 @@ def SQLA_delete_post(id: int, db: Session = Depends(get_db), user_id: int = Depe
                             detail=f"post with id {id} not found")
     
     if post.owner_id != user_id.id:
-        raise HTTPException(status_cod=status.HTTP_403_FORBIDDEN, 
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, 
                             detail=f"Not authorized to complete operation")
     post_query.delete(synchronize_session=False)
     db.commit()
